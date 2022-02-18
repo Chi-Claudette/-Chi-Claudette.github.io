@@ -1,0 +1,92 @@
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+    <div class="mt-2 pt-2 border-top">
+      <button type="button" class="btn btn-primary btn-sm">Take action</button>
+      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <div class="mt-2 pt-2 border-top">
+        <button type="button" class="btn btn-primary btn-sm">Take action</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="container">
+  <h2 style="text-align: center">Global Corona Virus Statistics</h2>
+  <h6>Date: {{data.Global.Date}}</h6>
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="new"><p>New confirmed case: {{data.Global.NewConfirmed}}</p>
+      <img src="assets/triangle.png" width="50px" height="40px">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="total"><p>Total confirmed case: {{data.Global.TotalConfirmed}}</p>
+      <img src="assets/x-mark.png" width="50px" height="40px">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div  class="new"><p>New Deaths: {{data.Global.NewDeaths}}</p>
+      <img src="assets/sun.png" width="50px" height="40px">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="total"><p>Total deaths: {{data.Global.TotalDeaths}}</p>
+      <img src="assets/cross.png" width="50px" height="40px">
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <input type="text" placeholder="search a country..." [(ngModel)]="countryName"><button (click)="filt()" class="btn btn-success">Search</button>
+  <br>
+  <p *ngIf="result">Search result of {{countryName}}</p>
+  <br>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Country</th>
+      <th>Country code</th>
+      <th>Slug</th>
+      <th>New confirmed</th>
+      <th>Total confirmed</th>
+      <th>New deaths</th>
+      <th>Total deaths</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let country of countries | filter: countryName">
+      <td>{{country.Country}}</td>
+      <td>{{country.CountryCode}}</td>
+      <td>{{country.Slug}}</td>
+      <td>{{country.NewConfirmed}}</td>
+      <td>{{country.TotalConfirmed}}</td>
+      <td>{{country.NewDeaths}}</td>
+      <td>{{country.TotalDeaths}}</td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+
