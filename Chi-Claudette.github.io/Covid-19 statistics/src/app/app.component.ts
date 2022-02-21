@@ -22,10 +22,6 @@ export class AppComponent implements OnInit{
       console.log(response);
     })
   }
-  filt()
-  {
-    this.result=true;
-  }
 
 
 }
